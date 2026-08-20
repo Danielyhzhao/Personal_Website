@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Daniel Zhao (赵禹皓) — AI &amp; Data Analyst. Turning machine learning into insight.">
+  <title>Home · Daniel Zhao</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🤖</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css?lang=en">
+</head>
+<body>
+  <nav class="nav">
+    
+    <a href="/en/" class="brand">Daniel Zhao</a>
+    <div class="links">
+      <a href="/en/#about"
+         class="active">About</a>
+      <a href="/en/projects/"
+         class="">Projects</a>
+      <a href="/en/blog/"
+         class="">Blog</a>
+      <a href="/en/contact/"
+         class="">Contact</a>
+    </div>
+    <div class="nav-right">
+      <!-- 社交图标：借鉴 sangluisme.github.io 的导航社交栏（内联 SVG，无需 CDN） -->
+      <a class="social" href="https://github.com/Danielyhzhao" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor" aria-hidden="true">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+        </svg>
+      </a>
+      <div class="lang">
+        <a href="/en/"
+           class="active">EN</a>
+        <span style="opacity:.4">/</span>
+        <a href="/zh/"
+           class="">中</a>
+      </div>
+      <!-- 移动端菜单按钮：借鉴 jangrundl.de 的 nav-toggle -->
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU OVERLAY（借鉴 jangrundl.de 的菜单遮罩） -->
+  <div class="menu-overlay" id="menu-overlay">
+    <ul class="menu-links">
+      <li><a href="/en/#about">About</a></li>
+      <li><a href="/en/projects/">Projects</a></li>
+      <li><a href="/en/blog/">Blog</a></li>
+      <li><a href="/en/contact/">Contact</a></li>
+    </ul>
+    <div class="menu-lang">
+      <a href="/en/">EN</a>
+      <span style="opacity:.4">/</span>
+      <a href="/zh/">中</a>
+    </div>
+  </div>
+
+  <main>
+<!-- HERO：借鉴 jangrundl.de 的两行大标题 + CTA -->
+<section class="hero container">
+  <p class="hero-hello hero-anim" style="animation-delay:.05s">Hello, I&#39;m Daniel Zhao.</p>
+  <h1 class="hero-title hero-anim" style="animation-delay:.15s">I turn machine learning into insight.</h1>
+  <p class="hero-role hero-anim" style="animation-delay:.28s">AI &amp; Data Analyst</p>
+  <p class="hero-tagline hero-anim" style="animation-delay:.38s">From a raw problem to a deployed model — I build AI systems that answer real questions.</p>
+  <div class="cta hero-anim" style="animation-delay:.50s">
+    <a href="/en/projects/" class="btn primary">View projects</a>
+    <a href="/en/contact/" class="btn ghost">Contact me</a>
+  </div>
+
+  <div class="stats hero-anim" style="animation-delay:.62s">
+    <div class="stat"><span class="stat-num">6</span><span class="stat-label">Projects</span></div>
+    <div class="stat"><span class="stat-num">5</span><span class="stat-label">Featured</span></div>
+    <div class="stat"><span class="stat-num">94.15%</span><span class="stat-label">Best accuracy</span></div>
+    <div class="stat"><span class="stat-num">2+</span><span class="stat-label">Years coding</span></div>
+  </div>
+</section>
+
+<!-- ABOUT：借鉴 jangrundl.de 的第一人称介绍 + Focus areas + 教育小节 -->
+<section class="container section about reveal" id="about">
+  <span class="section-kicker">About me</span>
+  <h2 class="section-title">Crafting code with purpose</h2>
+  <p class="about-text">I&#39;m an AI &amp; Data Analyst with a master&#39;s degree in AI &amp; Business Analytics. My work spans machine learning, NLP, and LLM engineering — always with one goal: turning data into decisions.</p>
+  <p class="about-text">I care about the full journey of a project: framing the problem, building the model, and shipping something people can actually use. That&#39;s why every project here is written up end to end — problem → data → method → result → insight.</p>
+
+  <div class="about-row">
+    <div class="about-col">
+      <h3 class="about-sub">Focus areas</h3>
+      <div class="chips">
+        
+          <span class="chip">Machine Learning</span>
+        
+          <span class="chip">Data Visualization</span>
+        
+          <span class="chip">NLP</span>
+        
+          <span class="chip">LLM Engineering</span>
+        
+          <span class="chip">Python</span>
+        
+          <span class="chip">SQL</span>
+        
+      </div>
+    </div>
+    <div class="about-col">
+      <h3 class="about-sub">Education</h3>
+      <div class="edu-item">
+        <span class="edu-icon">🎓</span>
+        <div>
+          <div class="edu-degree">MSc in AI &amp; Business Analytics</div>
+          <div class="edu-status">Completed · 2024 – 2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS：借鉴 sangluisme.github.io 的 Updates 动态 -->
+<section class="container section reveal" id="news">
+  <span class="section-kicker">🆕 Updates</span>
+  <div class="news-list">
+    
+      
+        <a class="news-item" href="/en/blog/dcgan-vs-ddpm/">
+      
+        <span class="news-date">2025-04-23</span>
+        <span class="news-icon">📝</span>
+        <span class="news-text">New blog: DCGAN vs DDPM on MNIST — what I learned.</span>
+        <span class="news-arrow">→</span>
+      </a>
+    
+      
+        <a class="news-item" href="https://github.com/Jackiee02/FakeNewsDetectionSystem" target="_blank" rel="noopener">
+      
+        <span class="news-date">2025-04-08</span>
+        <span class="news-icon">📦</span>
+        <span class="news-text">Fake News Detection system open-sourced on GitHub.</span>
+        <span class="news-arrow">→</span>
+      </a>
+    
+      
+        <a class="news-item" href="https://github.com/Jackiee02/SentimentAnalysisSystem" target="_blank" rel="noopener">
+      
+        <span class="news-date">2025-03-25</span>
+        <span class="news-icon">📦</span>
+        <span class="news-text">Sentiment analysis system open-sourced (team project).</span>
+        <span class="news-arrow">→</span>
+      </a>
+    
+      
+        <a class="news-item" href="/en/blog/streamlit-deploy-guide/">
+      
+        <span class="news-date">2025-03-10</span>
+        <span class="news-icon">📝</span>
+        <span class="news-text">New blog: Deploying a Streamlit ML app for free.</span>
+        <span class="news-arrow">→</span>
+      </a>
+    
+  </div>
+</section>
+
+<!-- FEATURED PROJECTS：借鉴 jangrundl.de 的「Featured · 年份」徽章卡片 -->
+<section class="container section reveal" id="projects">
+  <span class="section-kicker">Featured projects</span>
+  <h2 class="section-title">Featured projects</h2>
+  <div class="grid">
+    
+      <a href="/en/projects/mnist-gen-compare/" class="card project-card reveal" data-delay="1">
+        <div class="card-top">
+          <span class="badge">Generative AI</span>
+          <span class="card-meta">
+            <span class="badge accent">Featured</span>
+            <span class="card-year">2025</span>
+            <span class="card-icon">🎨</span>
+          </span>
+        </div>
+        
+          <div class="card-media"><img src="/static/images/mnist_cover.png?lang=en" alt="MNIST Generation: DCGAN vs DDPM"></div>
+        
+        <h3>MNIST Generation: DCGAN vs DDPM</h3>
+        <p>Trained and compared conditional DCGAN and DDPM on MNIST, with an interactive Flask web app.</p>
+        <div class="tags">
+          
+            <span class="tag">Python</span>
+          
+            <span class="tag">PyTorch</span>
+          
+            <span class="tag">DCGAN</span>
+          
+            <span class="tag">DDPM</span>
+          
+            <span class="tag">Flask</span>
+          
+        </div>
+        <span class="card-link">View case study →</span>
+      </a>
+    
+      <a href="/en/projects/dual-llm/" class="card project-card reveal" data-delay="2">
+        <div class="card-top">
+          <span class="badge">LLM Engineering</span>
+          <span class="card-meta">
+            <span class="badge accent">Featured</span>
+            <span class="card-year">2025</span>
+            <span class="card-icon">🤖</span>
+          </span>
+        </div>
+        
+          <div class="card-media"><img src="/static/images/dual_llm_cover.png?lang=en" alt="Dual-LLM Code Tutoring System"></div>
+        
+        <h3>Dual-LLM Code Tutoring System</h3>
+        <p>An adversarial dual-LLM loop that analyzes student code and generates feedback, with a web UI.</p>
+        <div class="tags">
+          
+            <span class="tag">Python</span>
+          
+            <span class="tag">LLM</span>
+          
+            <span class="tag">DeepSeek API</span>
+          
+            <span class="tag">Web UI</span>
+          
+        </div>
+        <span class="card-link">View case study →</span>
+      </a>
+    
+      <a href="/en/projects/car-racing-rl/" class="card project-card reveal" data-delay="3">
+        <div class="card-top">
+          <span class="badge">Reinforcement Learning</span>
+          <span class="card-meta">
+            <span class="badge accent">Featured</span>
+            <span class="card-year">2025</span>
+            <span class="card-icon">🏎️</span>
+          </span>
+        </div>
+        
+          <div class="card-media"><img src="/static/images/racing_cover.png?lang=en" alt="Car Racing: Q-Learning vs DQN"></div>
+        
+        <h3>Car Racing: Q-Learning vs DQN</h3>
+        <p>Multi-agent racing simulation comparing Q-Learning and DQN agents, rendered in real time.</p>
+        <div class="tags">
+          
+            <span class="tag">Python</span>
+          
+            <span class="tag">Reinforcement Learning</span>
+          
+            <span class="tag">Q-Learning</span>
+          
+            <span class="tag">DQN</span>
+          
+            <span class="tag">Pygame</span>
+          
+        </div>
+        <span class="card-link">View case study →</span>
+      </a>
+    
+      <a href="/en/projects/sentiment-analysis/" class="card project-card reveal" data-delay="4">
+        <div class="card-top">
+          <span class="badge">NLP</span>
+          <span class="card-meta">
+            <span class="badge accent">Featured</span>
+            <span class="card-year">2025</span>
+            <span class="card-icon">💬</span>
+          </span>
+        </div>
+        
+          <div class="card-media"><img src="/static/images/sentiment_cover.png?lang=en" alt="Social Media Sentiment Analysis"></div>
+        
+        <h3>Social Media Sentiment Analysis</h3>
+        <p>BiLSTM + BERT sentiment classification with data preprocessing, training, and a real-time web interface.</p>
+        <div class="tags">
+          
+            <span class="tag">Python</span>
+          
+            <span class="tag">BERT</span>
+          
+            <span class="tag">BiLSTM</span>
+          
+            <span class="tag">Flask</span>
+          
+        </div>
+        <span class="card-link">View case study →</span>
+      </a>
+    
+      <a href="/en/projects/diabetes-detection/" class="card project-card reveal" data-delay="5">
+        <div class="card-top">
+          <span class="badge">Machine Learning</span>
+          <span class="card-meta">
+            <span class="badge accent">Featured</span>
+            <span class="card-year">2025</span>
+            <span class="card-icon">🩺</span>
+          </span>
+        </div>
+        
+          <div class="card-media"><img src="/static/images/diabetes_cover.png?lang=en" alt="Early Diabetes Detection"></div>
+        
+        <h3>Early Diabetes Detection</h3>
+        <p>Multi-model comparison (LR, RF, GBM, SVM, NN, XGBoost) for diabetes risk prediction at 94.15% accuracy / 0.9716 ROC-AUC.</p>
+        <div class="tags">
+          
+            <span class="tag">Python</span>
+          
+            <span class="tag">Scikit-learn</span>
+          
+            <span class="tag">XGBoost</span>
+          
+            <span class="tag">ML</span>
+          
+        </div>
+        <span class="card-link">View case study →</span>
+      </a>
+    
+  </div>
+  <div class="more-link">
+    <a href="/en/projects/">All projects →</a>
+  </div>
+</section>
+</main>
+
+  <footer class="footer">
+    <div class="footer-social">
+      <a href="mailto:danielzhaoyh@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+          <path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.809L8.38 9.397a.75.75 0 0 1-.76 0L1.5 5.809v6.442Zm13-8.181v-.32a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25v.32L8 7.88Z"/>
+        </svg>
+      </a>
+      <a href="https://github.com/Danielyhzhao" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+        </svg>
+      </a>
+    </div>
+    <p>© 2025 Daniel Zhao · 赵禹皓</p>
+  </footer>
+
+  <div class="zoom-overlay" id="zoom-overlay"></div>
+  <script src="/static/js/anim.js?lang=en" defer></script>
+</body>
+</html>
