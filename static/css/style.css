@@ -1,0 +1,398 @@
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --surface-2: #1c2129;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --text-faint: #6e7681;
+  --accent: #3fb950;
+  --accent-strong: #2ea043;
+  --blue: #58a6ff;
+  --font-display: "DM Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* 导航 */
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 28px; border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; background: rgba(13, 17, 23, 0.9);
+  backdrop-filter: blur(8px); z-index: 10;
+}
+.nav .brand { font-weight: 600; font-size: 16px; }
+.nav .links { display: flex; gap: 22px; font-size: 14px; color: var(--text-muted); }
+.nav .links a:hover { color: var(--text); }
+.nav-right { display: flex; align-items: center; gap: 14px; }
+.nav .social { display: flex; align-items: center; color: var(--text-muted); transition: color .15s; }
+.nav .social:hover { color: var(--text); }
+.nav .lang { font-size: 14px; color: var(--text-muted); }
+.nav .lang a { padding: 0 3px; }
+.nav .lang a.active { color: var(--text); font-weight: 600; }
+
+/* 移动端菜单按钮（借鉴 jangrundl.de 的 nav-toggle） */
+.nav-toggle {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 6px;
+}
+.nav-toggle span {
+  width: 20px; height: 2px; background: var(--text);
+  border-radius: 2px; transition: transform .25s ease, opacity .25s ease;
+}
+.nav-toggle.open span:first-child { transform: translateY(3.5px) rotate(45deg); }
+.nav-toggle.open span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+
+/* 移动端全屏菜单（借鉴 jangrundl.de 的 menu-overlay） */
+.menu-overlay {
+  position: fixed; inset: 0; z-index: 20;
+  background: rgba(13, 17, 23, 0.97); backdrop-filter: blur(6px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease;
+}
+.menu-overlay.open { opacity: 1; pointer-events: auto; }
+.menu-links { list-style: none; text-align: center; display: flex; flex-direction: column; gap: 24px; }
+.menu-links a {
+  font-size: 22px; font-weight: 500; font-family: var(--font-display); color: var(--text);
+}
+.menu-links a:hover { color: var(--accent); }
+.menu-lang { font-size: 14px; color: var(--text-muted); }
+.menu-lang a { padding: 0 4px; color: var(--text-muted); }
+.menu-lang a:hover { color: var(--text); }
+
+@media (max-width: 720px) {
+  .nav .links, .nav .social { display: none; }
+  .nav-toggle { display: flex; }
+}
+
+/* 容器 */
+.container { max-width: 960px; margin: 0 auto; padding: 0 28px; }
+
+/* Hero（借鉴 jangrundl.de 两行大标题；背景为虚化图片） */
+.hero {
+  position: relative;
+  text-align: center; padding: 96px 0 64px;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(rgba(13, 17, 23, 0.62), rgba(13, 17, 23, 0.85)),
+    url("../images/hero-bg-blur.jpg") center/cover no-repeat;
+  z-index: 0;
+}
+.hero > * { position: relative; z-index: 1; }
+.hero-hello { color: var(--text-muted); font-size: 18px; margin-bottom: 14px; }
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5.4vw, 52px);
+  font-weight: 600; line-height: 1.15; letter-spacing: -0.02em;
+}
+.hero-role { color: var(--accent); font-size: 18px; font-weight: 500; margin-top: 18px; }
+.hero-tagline { color: var(--text-muted); max-width: 520px; margin: 12px auto 0; font-size: 15px; }
+.hero .cta { margin-top: 30px; display: flex; gap: 12px; justify-content: center; }
+
+/* 专注领域 chips */
+.focus { margin-top: 40px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.focus-label { color: var(--text-faint); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 560px; }
+.chip {
+  font-size: 13px; color: var(--text); border: 1px solid var(--border);
+  background: var(--surface); border-radius: 20px; padding: 5px 14px;
+  transition: border-color .15s;
+}
+.chip:hover { border-color: var(--accent-strong); }
+
+/* 统计 */
+.stats { margin-top: 36px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.stat { display: flex; flex-direction: column; align-items: center; }
+.stat-num { font-size: 28px; font-weight: 700; color: var(--accent); }
+.stat-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+/* 按钮 */
+.btn {
+  display: inline-block; padding: 10px 22px; border-radius: 8px;
+  font-size: 14px; font-weight: 500; cursor: pointer;
+}
+.btn.primary { background: var(--accent-strong); color: #fff; }
+.btn.primary:hover { background: var(--accent); }
+.btn.ghost { border: 1px solid var(--border); color: var(--text); }
+.btn.ghost:hover { border-color: var(--text-muted); }
+.btn.sm { padding: 7px 14px; font-size: 13px; }
+
+/* 区块标题 */
+.section-title { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+.section-kicker {
+  display: inline-block; font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .12em; color: var(--accent);
+  margin-bottom: 10px;
+}
+
+/* About（借鉴 jangrundl.de 第一人称 + 教育小节） */
+.about { max-width: 760px; }
+.about-text { color: var(--text-muted); margin-top: 14px; font-size: 15px; }
+.about-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 32px; margin-top: 32px; padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 640px) { .about-row { grid-template-columns: 1fr; } }
+.about-sub {
+  font-size: 12px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .1em; color: var(--text-faint); margin-bottom: 14px;
+}
+.about-col .chips { justify-content: flex-start; }
+.edu-item { display: flex; align-items: center; gap: 14px; }
+.edu-icon { font-size: 24px; }
+.edu-degree { font-size: 15px; font-weight: 500; }
+.edu-status { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+/* News / Updates（借鉴 sangluisme.github.io 的动态列表） */
+.news-list { display: flex; flex-direction: column; margin-top: 8px; }
+.news-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 14px; border-radius: 10px;
+  border-left: 2px solid var(--border);
+  transition: background .15s, border-color .15s;
+}
+.news-item:hover { background: var(--surface); border-left-color: var(--accent-strong); }
+.news-date {
+  color: var(--text-faint); font-size: 12px;
+  font-variant-numeric: tabular-nums; width: 84px; flex-shrink: 0;
+}
+.news-icon { font-size: 15px; flex-shrink: 0; }
+.news-text { color: var(--text); font-size: 14px; flex-grow: 1; }
+.news-arrow {
+  color: var(--text-faint); font-size: 14px;
+  opacity: 0; transition: opacity .15s, transform .15s;
+}
+.news-item:hover .news-arrow { opacity: 1; transform: translateX(3px); }
+
+.more-link { margin-top: 26px; text-align: center; }
+.more-link a { color: var(--accent); font-size: 14px; font-weight: 500; }
+.more-link a:hover { text-decoration: underline; }
+
+/* 项目卡片网格（带封面图） */
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+.card {
+  display: flex; flex-direction: column;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 16px; transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--accent-strong); transform: translateY(-3px); }
+.card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.card-meta { display: inline-flex; align-items: center; gap: 8px; }
+.card-icon { font-size: 20px; }
+.card-year {
+  font-size: 12px; color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+.card-cover {
+  width: 100%; height: 172px; object-fit: cover;
+  border-radius: 10px; background: var(--surface-2); display: block;
+}
+.card-cover.placeholder {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 46px; color: var(--text-faint);
+}
+.card-media { margin: 0 0 6px; }
+.card-media img {
+  width: 100%; height: 172px; object-fit: cover;
+  border-radius: 10px; background: var(--surface-2); display: block;
+}
+.card h3 { font-size: 16px; font-weight: 600; margin-top: 14px; }
+.card p { color: var(--text-muted); font-size: 14px; margin-top: 8px; flex-grow: 1; }
+.card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.card-link { margin-top: 14px; font-size: 13px; color: var(--accent); font-weight: 500; }
+.card:hover .card-link { text-decoration: underline; }
+
+.tag {
+  font-size: 12px; color: var(--blue); border: 1px solid #1f6feb33;
+  background: #1f6feb11; border-radius: 20px; padding: 2px 10px;
+}
+
+/* 徽章 */
+.badge {
+  display: inline-block; font-size: 12px; font-weight: 500;
+  color: var(--accent); background: #2ea0431a; border: 1px solid #2ea04333;
+  border-radius: 20px; padding: 2px 10px;
+}
+.badge.soon { color: var(--text-muted); background: var(--surface-2); border-color: var(--border); }
+.badge.accent { color: #fff; background: var(--accent-strong); border-color: var(--accent-strong); }
+
+/* 页面通用 */
+.page { padding: 56px 0 72px; }
+.page h1 { font-size: 30px; font-weight: 600; }
+.page .lead { color: var(--text-muted); margin-top: 10px; max-width: 620px; }
+
+/* case study 详情 */
+.article { max-width: 760px; }
+.detail-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.detail-icon { font-size: 22px; }
+.article h1 { font-size: 30px; font-weight: 600; }
+.article .summary { color: var(--text-muted); margin-top: 10px; }
+.detail-cover { width: 100%; border-radius: 12px; margin: 26px 0; border: 1px solid var(--border); }
+.gallery-title {
+  font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em;
+  color: var(--accent); margin-top: 44px;
+}
+.gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+.gallery img {
+  width: 100%; border-radius: 10px; border: 1px solid var(--border);
+  background: var(--surface-2); transition: transform .15s;
+}
+.gallery img:hover { transform: scale(1.02); }
+@media (max-width: 640px) { .gallery { grid-template-columns: 1fr; } }
+
+.case { margin-top: 36px; display: flex; flex-direction: column; gap: 26px; }
+.case section { border-left: 2px solid var(--accent-strong); padding-left: 18px; }
+.case h2 {
+  font-size: 13px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--accent);
+}
+.case p { color: var(--text); margin-top: 6px; font-size: 15px; }
+.article .actions { margin-top: 36px; display: flex; gap: 12px; }
+
+/* 博客 */
+.post-list { display: flex; flex-direction: column; gap: 14px; }
+.post {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px 22px; display: block;
+}
+.post:hover { border-color: var(--accent-strong); }
+.post .meta { color: var(--text-faint); font-size: 13px; }
+.post h3 { font-size: 17px; font-weight: 600; margin-top: 6px; }
+.post p { color: var(--text-muted); font-size: 14px; margin-top: 6px; }
+
+/* 文章正文 */
+.prose { max-width: 720px; }
+.prose .meta { color: var(--text-faint); font-size: 13px; margin-bottom: 24px; }
+.prose h1 { font-size: 30px; font-weight: 600; }
+.prose h2 { font-size: 20px; font-weight: 600; margin: 32px 0 12px; }
+.prose p { margin: 14px 0; color: var(--text); }
+.prose code { background: var(--surface-2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; font-size: 13px; }
+.prose pre { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 16px; overflow-x: auto; margin: 16px 0; }
+.prose pre code { background: none; border: none; padding: 0; }
+.prose ul { margin: 12px 0 12px 22px; }
+
+/* 联系 */
+.contact-links { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+.contact-item {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 20px;
+}
+.contact-item .label { color: var(--text-faint); font-size: 13px; width: 70px; }
+.contact-item .value { font-size: 15px; }
+.contact-item .value a { color: var(--blue); }
+
+/* 页脚 */
+.footer {
+  border-top: 1px solid var(--border); padding: 32px 28px;
+  text-align: center; color: var(--text-faint); font-size: 13px;
+}
+.footer a { color: var(--text-muted); }
+.footer a:hover { color: var(--text); }
+.footer-social { display: flex; justify-content: center; gap: 18px; margin-bottom: 12px; }
+.footer-social a { display: flex; align-items: center; }
+.footer .footer-sub { margin-top: 8px; font-size: 12px; }
+.footer .footer-sub a { text-decoration: underline; }
+
+.section { padding: 40px 0; }
+.muted { color: var(--text-muted); }
+
+/* ============================================================
+   DYNAMIC EFFECTS (borrowed from jangrundl.de & sangluisme)
+   ============================================================ */
+
+/* 1) 滚动入场淡入上浮 — jangrundl .reveal 机制 */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* 子元素错峰延迟 */
+.reveal[data-delay="1"] { transition-delay: 0.08s; }
+.reveal[data-delay="2"] { transition-delay: 0.16s; }
+.reveal[data-delay="3"] { transition-delay: 0.24s; }
+.reveal[data-delay="4"] { transition-delay: 0.32s; }
+.reveal[data-delay="5"] { transition-delay: 0.40s; }
+.reveal[data-delay="6"] { transition-delay: 0.48s; }
+.reveal[data-delay="7"] { transition-delay: 0.56s; }
+.reveal[data-delay="8"] { transition-delay: 0.64s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none; }
+}
+
+/* 2) Hero 错峰入场 — jangrundl fadeUp */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-anim { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* 3) 导航下划线动画 — jangrundl a::after */
+.nav .links a { position: relative; transition: color 0.2s; }
+.nav .links a::after {
+  content: ""; position: absolute; left: 0; bottom: -4px;
+  height: 2px; width: 0; background: var(--accent);
+  transition: width 0.3s ease;
+}
+.nav .links a:hover { color: var(--text); }
+.nav .links a:hover::after,
+.nav .links a.active::after { width: 100%; }
+
+/* 4) 卡片 hover 上浮 + 封面图缩放 — jangrundl 卡片 + sangluisme 图片 */
+.project-card { transition: transform 0.3s cubic-bezier(0.22,1,0.36,1),
+                          box-shadow 0.3s ease; }
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 42px rgba(0,0,0,0.40);
+}
+.project-card .card-media { overflow: hidden; }
+.project-card .card-media img,
+.project-card .card-ph-media img {
+  transition: transform 0.55s cubic-bezier(0.22,1,0.36,1);
+}
+.project-card:hover .card-media img,
+.project-card:hover .card-ph-media img { transform: scale(1.06); }
+
+/* 5) 点图全屏放大遮罩 — sangluisme medium-zoom 风格 */
+.zoom-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(3, 6, 12, 0.92);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease; cursor: zoom-out;
+}
+.zoom-overlay.open { opacity: 1; pointer-events: auto; }
+.zoom-overlay img {
+  max-width: 92vw; max-height: 88vh; border-radius: 10px;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.6);
+  transform: scale(0.92);
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+.zoom-overlay.open img { transform: scale(1); }
+.zoomable, .gallery-img { cursor: zoom-in; }
+.zoomable:hover, .gallery-img:hover { filter: brightness(1.05); }

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}{{ project.title[lang] }}{% endblock %}
+{% block content %}
+<div class="page container reveal">
+  <article class="article">
+    <div class="detail-head">
+      <span class="badge">{{ project.category[lang] }}</span>
+      <span class="detail-icon">{{ project.icon }}</span>
+    </div>
+    <h1>{{ project.title[lang] }}</h1>
+    <p class="summary">{{ project.summary[lang] }}</p>
+
+    <div class="tags" style="margin-top: 16px;">
+      {% for s in project.stack %}
+        <span class="tag">{{ s }}</span>
+      {% endfor %}
+    </div>
+
+    {% if project.get('cover') %}
+      <img class="detail-cover zoomable" src="{{ url_for('static', filename='images/' ~ project.cover) }}" alt="{{ project.title[lang] }}">
+    {% endif %}
+
+    {% if project.get('gallery') %}
+      <h2 class="gallery-title">{{ t('detail.gallery') }}</h2>
+      <div class="gallery">
+        {% for img in project.gallery %}
+          <img class="gallery-img zoomable" src="{{ url_for('static', filename='images/' ~ img) }}" alt="{{ project.title[lang] }}">
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if project.get('case_study') %}
+      <div class="case">
+        {% for key in ['problem', 'data', 'method', 'result', 'insight'] %}
+          <section class="reveal">
+            <h2>{{ t('section.' ~ key) }}</h2>
+            <p>{{ project.case_study[key][lang] }}</p>
+          </section>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="muted" style="margin-top: 32px;">{{ t('detail.coming_soon') }}</p>
+    {% endif %}
+
+    <div class="actions">
+      {% if project.get('github_url') %}
+        <a href="{{ project.github_url }}" class="btn ghost sm" target="_blank" rel="noopener">{{ t('detail.github') }}</a>
+      {% endif %}
+      {% if project.get('demo_url') %}
+        <a href="{{ project.demo_url }}" class="btn primary sm" target="_blank" rel="noopener">{{ t('detail.live_demo') }}</a>
+      {% endif %}
+    </div>
+  </article>
+</div>
+{% endblock %}

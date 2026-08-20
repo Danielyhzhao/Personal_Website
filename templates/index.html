@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<!-- HERO：借鉴 jangrundl.de 的两行大标题 + CTA -->
+<section class="hero container">
+  <p class="hero-hello hero-anim" style="animation-delay:.05s">{{ t('hero.hello') }}</p>
+  <h1 class="hero-title hero-anim" style="animation-delay:.15s">{{ t('hero.title') }}</h1>
+  <p class="hero-role hero-anim" style="animation-delay:.28s">{{ t('hero.role') }}</p>
+  <p class="hero-tagline hero-anim" style="animation-delay:.38s">{{ t('hero.tagline') }}</p>
+  <div class="cta hero-anim" style="animation-delay:.50s">
+    <a href="{{ url_for('project_list', lang=lang) }}" class="btn primary">{{ t('hero.cta_projects') }}</a>
+    <a href="{{ url_for('contact', lang=lang) }}" class="btn ghost">{{ t('hero.cta_contact') }}</a>
+  </div>
+
+  <div class="stats hero-anim" style="animation-delay:.62s">
+    <div class="stat"><span class="stat-num">6</span><span class="stat-label">{{ t('hero.stats_projects') }}</span></div>
+    <div class="stat"><span class="stat-num">5</span><span class="stat-label">{{ t('hero.stats_featured') }}</span></div>
+    <div class="stat"><span class="stat-num">94.15%</span><span class="stat-label">{{ t('hero.stats_accuracy') }}</span></div>
+    <div class="stat"><span class="stat-num">2+</span><span class="stat-label">{{ t('hero.stats_years') }}</span></div>
+  </div>
+</section>
+
+<!-- ABOUT：借鉴 jangrundl.de 的第一人称介绍 + Focus areas + 教育小节 -->
+<section class="container section about reveal" id="about">
+  <span class="section-kicker">{{ t('about.title') }}</span>
+  <h2 class="section-title">{{ t('about.heading') }}</h2>
+  <p class="about-text">{{ t('about.body1') }}</p>
+  <p class="about-text">{{ t('about.body2') }}</p>
+
+  <div class="about-row">
+    <div class="about-col">
+      <h3 class="about-sub">{{ t('hero.focus_label') }}</h3>
+      <div class="chips">
+        {% for f in t('hero.focus_items') %}
+          <span class="chip">{{ f }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="about-col">
+      <h3 class="about-sub">{{ t('about.education_title') }}</h3>
+      <div class="edu-item">
+        <span class="edu-icon">🎓</span>
+        <div>
+          <div class="edu-degree">{{ t('about.education_degree') }}</div>
+          <div class="edu-status">{{ t('about.education_status') }} · 2024 – 2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS：借鉴 sangluisme.github.io 的 Updates 动态 -->
+<section class="container section reveal" id="news">
+  <span class="section-kicker">🆕 {{ t('news.title') }}</span>
+  <div class="news-list">
+    {% for n in news %}
+      {% if n.kind == 'blog' %}
+        <a class="news-item" href="{{ url_for('blog_post', lang=lang, slug=n.slug) }}">
+      {% else %}
+        <a class="news-item" href="{{ n.url }}" target="_blank" rel="noopener">
+      {% endif %}
+        <span class="news-date">{{ n.date }}</span>
+        <span class="news-icon">{{ n.icon }}</span>
+        <span class="news-text">{{ n[lang] }}</span>
+        <span class="news-arrow">→</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- FEATURED PROJECTS：借鉴 jangrundl.de 的「Featured · 年份」徽章卡片 -->
+<section class="container section reveal" id="projects">
+  <span class="section-kicker">{{ t('projects.title') }}</span>
+  <h2 class="section-title">{{ t('projects.title') }}</h2>
+  <div class="grid">
+    {% for p in projects %}
+      <a href="{{ url_for('project_detail', lang=lang, slug=p.slug) }}" class="card project-card reveal" data-delay="{{ loop.index }}">
+        <div class="card-top">
+          <span class="badge">{{ p.category[lang] }}</span>
+          <span class="card-meta">
+            {% if p.featured %}<span class="badge accent">{{ t('projects.featured_badge') }}</span>{% endif %}
+            {% if p.year %}<span class="card-year">{{ p.year }}</span>{% endif %}
+            <span class="card-icon">{{ p.icon }}</span>
+          </span>
+        </div>
+        {% if p.cover %}
+          <div class="card-media"><img src="{{ url_for('static', filename='images/' ~ p.cover) }}" alt="{{ p.title[lang] }}"></div>
+        {% else %}
+          <div class="card-cover placeholder">{{ p.icon }}</div>
+        {% endif %}
+        <h3>{{ p.title[lang] }}</h3>
+        <p>{{ p.summary[lang] }}</p>
+        <div class="tags">
+          {% for s in p.stack %}
+            <span class="tag">{{ s }}</span>
+          {% endfor %}
+        </div>
+        <span class="card-link">{{ t('projects.view_case') }} →</span>
+      </a>
+    {% endfor %}
+  </div>
+  <div class="more-link">
+    <a href="{{ url_for('project_list', lang=lang) }}">{{ t('projects.all') }} →</a>
+  </div>
+</section>
+{% endblock %}

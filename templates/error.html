@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}{{ code }}{% endblock %}
+{% block content %}
+<div class="page container" style="text-align:center; padding:120px 0;">
+  <div style="font-size:64px; font-weight:700; color:var(--accent-strong); font-family:var(--font-display);">{{ code }}</div>
+  <p class="lead" style="margin:16px auto 0; text-align:center;">{{ msg_en }}</p>
+  <p class="lead" style="margin:4px auto 0; text-align:center;">{{ msg_zh }}</p>
+  <div style="margin-top:32px;">
+    <a href="{{ url_for('home', lang='en') }}" class="btn primary">EN · Home</a>
+    <a href="{{ url_for('home', lang='zh') }}" class="btn ghost">中文 · 首页</a>
+  </div>
+</div>
+{% endblock %}

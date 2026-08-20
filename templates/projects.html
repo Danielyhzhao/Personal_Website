@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}{{ t('nav.projects') }}{% endblock %}
+{% block content %}
+<div class="page container reveal">
+  <h1>{{ t('projects.all') }}</h1>
+  <p class="lead">{% if lang == 'zh' %}基于 GitHub 真实项目的作品集，按「问题 → 数据 → 方法 → 结果 → 洞察」展开。{% else %}A portfolio of real GitHub projects, structured as problem → data → method → result → insight.{% endif %}</p>
+
+  <div class="grid" style="margin-top: 32px;">
+    {% for p in projects %}
+      <a href="{{ url_for('project_detail', lang=lang, slug=p.slug) }}" class="card project-card reveal" data-delay="{{ loop.index }}">
+        <div class="card-top">
+          <span class="badge">{{ p.category[lang] }}</span>
+          <span class="card-meta">
+            {% if p.featured %}<span class="badge accent">{{ t('projects.featured_badge') }}</span>{% endif %}
+            {% if p.year %}<span class="card-year">{{ p.year }}</span>{% endif %}
+            <span class="card-icon">{{ p.icon }}</span>
+          </span>
+        </div>
+        {% if p.cover %}
+          <div class="card-media"><img src="{{ url_for('static', filename='images/' ~ p.cover) }}" alt="{{ p.title[lang] }}"></div>
+        {% else %}
+          <div class="card-cover placeholder">{{ p.icon }}</div>
+        {% endif %}
+        {% if not p.featured %}<span class="badge soon">{% if lang == 'zh' %}即将上传{% else %}Coming soon{% endif %}</span>{% endif %}
+        <h3>{{ p.title[lang] }}</h3>
+        <p>{{ p.summary[lang] }}</p>
+        <div class="tags">
+          {% for s in p.stack %}
+            <span class="tag">{{ s }}</span>
+          {% endfor %}
+        </div>
+        <span class="card-link">{{ t('projects.view_case') }} →</span>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
