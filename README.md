@@ -2,9 +2,9 @@
 
 Source code for my bilingual (EN/ZH) personal website: projects, blog posts, and a short bio.
 
-> Live previews:
-> - **Vercel (Flask dynamic)**: https://personal-website-xxxx.vercel.app (fill after deploy)
-> - **GitHub Pages (static)**: https://danielyhzhao.github.io/
+> **Live site:** https://danielyhzhao.github.io/
+> **Deploy:** GitHub Pages (static build). A Flask/Vercel deployment option is documented in `DEPLOY.md`.
+
 
 ---
 
